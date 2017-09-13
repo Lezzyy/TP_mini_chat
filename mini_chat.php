@@ -32,15 +32,36 @@
     <![endif]-->
 
     <!-- TU CODES ICI -->
-<h1>Mini Chat</h1>
+<h1 class="text-center">Mini Chat</h1>
 
 <div class="container">
 <form class="" action="minichat_post.php" method="post">
-<input type="text" name="pseudo" value="pseudo">
-<input type="text" name="message" value="message">
-<input type="submit" name="envoyer" value="">
+<input type="text" name="pseudo" placeholder="pseudo">
+<input type="text" name="message" placeholder="message">
+<input type="submit" name="envoyer" value="Envoyer">
 </form>
 </div>
+
+<?php
+try {
+  $bdd = new PDO('mysql:host=localhost;dbname=minichat;charset=utf8', 'root', 'gj7b!17LA');
+}
+catch(Exception $e)
+{
+  die('Erreur :'. $e->getMessage());
+}
+
+$reponse = $bdd->query('SELECT * FROM message ORDER BY id DESC  LIMIT 0, 10');
+
+while ($donnees = $reponse->fetch())
+{
+ echo $donnees['pseudo']." : ". $donnees['texte']."<br/>";
+}
+
+$reponse->closeCursor();
+  ?>
+
+
 
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
