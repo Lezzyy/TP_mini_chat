@@ -32,14 +32,23 @@
     <![endif]-->
 
     <!-- TU CODES ICI -->
-<h1 class="text-center">Mini Chat</h1>
-
+    <div class="container-fluid">
+      <div class="text-center">
+        <img src="img/friends_logo.png" alt="" class="center-block">
+      </div>
+    </div>
 <div class="container">
-<form class="" action="minichat_post.php" method="post">
-<input type="text" name="pseudo" placeholder="pseudo">
-<input type="text" name="message" placeholder="message">
-<input type="submit" name="envoyer" value="Envoyer">
-</form>
+  <div class="row">
+    <!-- <div class="col-lg-4 col-lg-offset-4"> -->
+        <!-- <div class="input-group"> -->
+          <form class="text-center" action="minichat_post.php" method="post">
+            <input class="center-block" type="text" name="pseudo" placeholder="pseudo"><br>
+            <input type="text" name="message" placeholder="message"><br>
+            <input type="submit" name="envoyer" value="Envoyer">
+        </form>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
 </div>
 
 <?php
@@ -55,9 +64,14 @@ $reponse = $bdd->query('SELECT * FROM message ORDER BY id DESC  LIMIT 0, 10');
 
 while ($donnees = $reponse->fetch())
 {
- echo $donnees['pseudo']." : ". $donnees['texte']."<br/>";
-}
+?>
+<div class="container message">
+  <p class="text-center"><strong><?php echo $donnees['pseudo']?></strong> : <?php echo $donnees['texte'] ?><br/></p>
+</div>
 
+
+<?php
+}
 $reponse->closeCursor();
   ?>
 

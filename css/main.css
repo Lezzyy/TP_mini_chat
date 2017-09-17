@@ -95,8 +95,13 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body{
+  background-color: black;
+}
 
-
+p{
+  color: white;
+}
 
 
 
